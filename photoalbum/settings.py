@@ -78,9 +78,9 @@ WSGI_APPLICATION = "photoalbum.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "database-name",
-        "USER": "database-user",
-        "PASSWORD": "database-password",
+        "NAME": "sampledb",
+        "USER": "userLL6",
+        "PASSWORD": "TrFPFt4KJqR5uAbP",
         "HOST": "172.30.237.74",
         "PORT": "5432",
     }
