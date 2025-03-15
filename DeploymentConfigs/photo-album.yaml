@@ -1,0 +1,300 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  annotations:
+    app.openshift.io/route-disabled: 'false'
+    app.openshift.io/vcs-ref: ''
+    app.openshift.io/vcs-uri: 'https://github.com/pasztork/photo-album'
+    openshift.io/generated-by: OpenShiftWebConsole
+  resourceVersion: '409014552'
+  name: photo-album
+  uid: 5f433380-01d9-403e-a01f-d98749ca8a16
+  creationTimestamp: '2025-03-14T00:36:56Z'
+  generation: 19
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps.openshift.io/v1
+      time: '2025-03-14T19:14:31Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:app.openshift.io/route-disabled': {}
+            'f:app.openshift.io/vcs-ref': {}
+            'f:app.openshift.io/vcs-uri': {}
+            'f:openshift.io/generated-by': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:app.kubernetes.io/component': {}
+            'f:app.kubernetes.io/instance': {}
+            'f:app.kubernetes.io/name': {}
+            'f:app.kubernetes.io/part-of': {}
+            'f:app.openshift.io/runtime': {}
+            'f:app.openshift.io/runtime-version': {}
+        'f:spec':
+          'f:selector':
+            .: {}
+            'f:app': {}
+            'f:deploymentconfig': {}
+          'f:strategy':
+            'f:activeDeadlineSeconds': {}
+            'f:rollingParams':
+              .: {}
+              'f:intervalSeconds': {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+              'f:timeoutSeconds': {}
+              'f:updatePeriodSeconds': {}
+            'f:type': {}
+          'f:template':
+            .: {}
+            'f:metadata':
+              .: {}
+              'f:creationTimestamp': {}
+              'f:labels':
+                .: {}
+                'f:app': {}
+                'f:deploymentconfig': {}
+            'f:spec':
+              .: {}
+              'f:containers':
+                .: {}
+                'k:{"name":"photo-album"}':
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"/media/nfs"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"NFS_PATH"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"PSQL_HOST"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"PSQL_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:secretKeyRef': {}
+                    'k:{"name":"PSQL_PASS"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:secretKeyRef': {}
+                    'k:{"name":"PSQL_PORT"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"PSQL_USER"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:secretKeyRef': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":8080,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:securityContext': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:volumes':
+                .: {}
+                'k:{"name":"mypd"}':
+                  .: {}
+                  'f:name': {}
+                  'f:persistentVolumeClaim':
+                    .: {}
+                    'f:claimName': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: apps.openshift.io/v1
+      time: '2025-03-14T19:22:04Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:template':
+            'f:spec':
+              'f:containers':
+                'k:{"name":"photo-album"}':
+                  'f:image': {}
+          'f:triggers': {}
+    - manager: member-operator
+      operation: Update
+      apiVersion: apps.openshift.io/v1
+      time: '2025-03-15T07:22:05Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:replicas': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: apps.openshift.io/v1
+      time: '2025-03-15T07:22:05Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:details':
+            .: {}
+            'f:causes': {}
+            'f:message': {}
+          'f:latestVersion': {}
+          'f:observedGeneration': {}
+          'f:replicas': {}
+          'f:unavailableReplicas': {}
+          'f:updatedReplicas': {}
+      subresource: status
+  namespace: scoop3-dev
+  labels:
+    app: photo-album
+    app.kubernetes.io/component: photo-album
+    app.kubernetes.io/instance: photo-album
+    app.kubernetes.io/name: photo-album
+    app.kubernetes.io/part-of: photo-album-app
+    app.openshift.io/runtime: python
+    app.openshift.io/runtime-version: 3.12-ubi8
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - photo-album
+        from:
+          kind: ImageStreamTag
+          namespace: scoop3-dev
+          name: 'photo-album:latest'
+        lastTriggeredImage: 'image-registry.openshift-image-registry.svc:5000/scoop3-dev/photo-album@sha256:24cd4265600f5bb6d60c776be5449d11d4e473148fc70ccbe026e4050b22765c'
+    - type: ConfigChange
+  replicas: 0
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: photo-album
+    deploymentconfig: photo-album
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: photo-album
+        deploymentconfig: photo-album
+    spec:
+      volumes:
+        - name: mypd
+          persistentVolumeClaim:
+            claimName: my-storage-claim
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: photo-album
+          env:
+            - name: PSQL_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-name
+            - name: PSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-user
+            - name: PSQL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: postgresql
+                  key: database-password
+            - name: PSQL_HOST
+              value: postgresql
+            - name: PSQL_PORT
+              value: '5432'
+            - name: NFS_PATH
+              value: /media/nfs
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: mypd
+              mountPath: /media/nfs
+          terminationMessagePolicy: File
+          image: 'image-registry.openshift-image-registry.svc:5000/scoop3-dev/photo-album@sha256:24cd4265600f5bb6d60c776be5449d11d4e473148fc70ccbe026e4050b22765c'
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+status:
+  latestVersion: 8
+  observedGeneration: 19
+  replicas: 0
+  updatedReplicas: 0
+  availableReplicas: 0
+  unavailableReplicas: 0
+  details:
+    message: image change
+    causes:
+      - type: ImageChange
+        imageTrigger:
+          from:
+            kind: DockerImage
+            name: 'image-registry.openshift-image-registry.svc:5000/scoop3-dev/photo-album@sha256:24cd4265600f5bb6d60c776be5449d11d4e473148fc70ccbe026e4050b22765c'
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2025-03-14T19:22:14Z'
+      lastTransitionTime: '2025-03-14T19:22:10Z'
+      reason: NewReplicationControllerAvailable
+      message: replication controller "photo-album-8" successfully rolled out
+    - type: Available
+      status: 'False'
+      lastUpdateTime: '2025-03-15T07:22:05Z'
+      lastTransitionTime: '2025-03-15T07:22:05Z'
+      message: Deployment config does not have minimum availability.
