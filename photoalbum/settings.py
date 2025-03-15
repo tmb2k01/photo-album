@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-_z*_6aadnir9sq=jut3#sv!3i+exnjj9!2+*ajm@616_=cv1ig"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '*.openshiftapps.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = "photoalbum.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv('PSQL_NAME'),
+        "USER": os.getenv('PSQL_USER'),
+        "PASSWORD": os.getenv('PSQL_PASS'),
+        "HOST": os.getenv('PSQL_HOST'),
+        "PORT": os.getenv('PSQL_PORT'),
     }
 }
 
@@ -126,4 +130,4 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_ROOT = os.path.join(os.getenv('NFS_PATH'), "media")

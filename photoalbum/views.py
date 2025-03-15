@@ -9,16 +9,19 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Photo
 
 
+@csrf_exempt
 def home_page(request):
     if request.user.is_authenticated:
         return redirect("dashboard")
     return render(request, "home.html")
 
 
+@csrf_exempt
 def register_page(request):
     if request.user.is_authenticated:
         return redirect("dashboard")
@@ -51,6 +54,7 @@ def register_page(request):
     return render(request, "register.html")
 
 
+@csrf_exempt
 def login_page(request):
     if request.user.is_authenticated:
         return redirect("dashboard")
@@ -76,6 +80,7 @@ def login_page(request):
     return render(request, "login.html")
 
 
+@csrf_exempt
 @login_required
 def dashboard_page(request):
     photos = Photo.objects.filter(user=request.user)
@@ -89,6 +94,7 @@ def dashboard_page(request):
     return render(request, "dashboard.html", {"photos": photos})
 
 
+@csrf_exempt
 @login_required
 def upload_page(request):
     if request.method == "POST":
@@ -116,6 +122,7 @@ def upload_page(request):
     return render(request, "upload.html")
 
 
+@csrf_exempt
 @login_required
 def delete_photo(request, id):
     photo = get_object_or_404(Photo, id=id)
@@ -132,6 +139,7 @@ def delete_photo(request, id):
     return redirect("dashboard")
 
 
+@csrf_exempt
 def logout_page(request):
     logout(request)
     return redirect("home")
